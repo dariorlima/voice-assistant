@@ -1,0 +1,4 @@
+audios/*.wav
+node_modules
+*.wav
+.ENV
