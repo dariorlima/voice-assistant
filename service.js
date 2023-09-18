@@ -1,10 +1,17 @@
-var Service = require('node-windows').Service;
+import { Service } from 'node-windows';
+import dotenv from 'dotenv';
+import path from 'path';
 
+dotenv.config();
+
+const assistantName = process.env.ASSISTANT_NAME || 'Unknown';
+
+const assistantPath = path.join(process.cwd(), 'main.js');
 // Create a new service object
-var svc = new Service({
-    name: 'Pandas',
+const svc = new Service({
+    name: assistantName,
     description: 'Capture voice ideas and transcript it',
-    script: 'C:\\Users\\root\\Projects\\panda-ws-service\\main.js',
+    script: assistantPath,
     nodeOptions: [
         '--harmony',
         '--max_old_space_size=4096'

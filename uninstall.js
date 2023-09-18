@@ -1,9 +1,12 @@
-var Service = require('node-windows').Service;
+import { Service } from 'node-windows';
+
+const assistantName = process.env.ASSISTANT_NAME || 'Unknown';
+const assistantPath = path.join(process.cwd(), 'main.js');
 
 // Create a new service object
-var svc = new Service({
-    name: 'Pandas',
-    script: require('path').join(process.cwd(), 'main.js')
+const svc = new Service({
+    name: assistantName,
+    script: assistantPath
 });
 
 // Listen for the "uninstall" event so we know when it's done.
